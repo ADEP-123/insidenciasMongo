@@ -26,10 +26,6 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 - 4.3. Si no tiene una conexion configurada y desea hacerlo de manera local selecciona la opcion avanzada y luego presione conectar para hacerlo de manera local o configure los datos de la conexion.
 
 5. **SOLO Si** va a utilizar una conexion diferente a la de el proyecto Ejecutar el archivo query.mongodb que se encuentra dentro del directorio backend/db/scripts.
-6. Para ejecutar las consultas haga lo siguiente:
-
-- 6.1. Abra el archivo consultas.mongodb que se encuentra dentro del directorio backend/db/scripts.
-- 6.2. Subraye la consulta a realizar incluyendo el comando `use("db_insidencias_mongo");` y ejecutela con el simbolo de la parte superior derecha
 
 ### Si desea hacer uso de la API:
 
