@@ -1,0 +1,327 @@
+use("db_insidencias_mongo");
+const currentDate = new Date();
+
+// Coleccion de autoincrementables
+db.createCollection("counters");
+db.counters.insertMany([
+    { _id: "categoriaId", sequence_value: 0 },
+    { _id: "tipoId", sequence_value: 0 },
+    { _id: "areasId", sequence_value: 0 },
+    { _id: "lugaresId", sequence_value: 0 },
+    { _id: "tipo_equipoId", sequence_value: 0 }
+]);
+function siguienteId(coleccion) {
+    const sequenceDocument = db.counters.findOneAndUpdate(
+        { _id: `${coleccion}Id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+}
+
+// Coleccion categoria
+db.createCollection("categoria", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["cat_id", "cat_nombre"],
+            properties: {
+                cat_id: {
+                    bsonType: "int",
+                    description: "el id de la categoria es requerido"
+                },
+                cat_nombre: {
+                    bsonType: "string",
+                    description: "el nombre de la categoria es requerido"
+                }
+            }
+        }
+    }
+});
+db.categoria.insertMany([
+    {
+        cat_id: siguienteId("categoria"),
+        cat_nombre: "hardware"
+    },
+    {
+        cat_id: siguienteId("categoria"),
+        cat_nombre: "software"
+    }
+]);
+
+// Coleccion Tipo
+db.createCollection("tipo", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["tip_id", "tip_nombre"],
+            properties: {
+                tip_id: {
+                    bsonType: "int",
+                    description: "el id del tipo es requerido"
+                },
+                tip_nombre: {
+                    bsonType: "string",
+                    description: "el nombre del tipo es requerido"
+                }
+            }
+        }
+    }
+});
+db.tipo.insertMany([
+    {
+        tip_id: siguienteId("tipo"),
+        tip_nombre: "leve"
+    },
+    {
+        tip_id: siguienteId("tipo"),
+        tip_nombre: "moderada"
+    },
+    {
+        tip_id: siguienteId("tipo"),
+        tip_nombre: "critica"
+    }
+]);
+
+// Coleccion areas
+db.createCollection("areas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["area_id", "area_nombre"],
+            properties: {
+                area_id: {
+                    bsonType: "int",
+                    description: "el id del área es requerido"
+                },
+                area_nombre: {
+                    bsonType: "string",
+                    description: "el nombre del área es requerido"
+                }
+            }
+        }
+    }
+});
+db.areas.insertMany([
+    {
+        area_id: siguienteId("areas"),
+        area_nombre: "Area training"
+    },
+    {
+        area_id: siguienteId("areas"),
+        area_nombre: "Area Review 1"
+    },
+    {
+        area_id: siguienteId("areas"),
+        area_nombre: "Area Review 2"
+    }
+]);
+
+// Coleccion lugares
+db.createCollection("lugares", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["lugar_id", "area_lugar", "lugar_nombre"],
+            properties: {
+                lugar_id: {
+                    bsonType: "int",
+                    description: "el id del lugar es requerido"
+                },
+                area_lugar: {
+                    bsonType: "int",
+                    description: "el área del lugar es requerido"
+                },
+                lugar_nombre: {
+                    bsonType: "string",
+                    description: "el nombre del lugar es requerido"
+                }
+            }
+        }
+    }
+});
+db.lugares.insertMany([
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 1,
+        lugar_nombre: "Apolo"
+    },
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 1,
+        lugar_nombre: "Artemis"
+    },
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 1,
+        lugar_nombre: "Sputnik"
+    },
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 1,
+        lugar_nombre: "Skylab"
+    },
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 2,
+        lugar_nombre: "Corvus"
+    },
+    {
+        lugar_id: siguienteId("lugares"),
+        area_lugar: 3,
+        lugar_nombre: "Endor"
+    }
+]);
+
+// Coleccion tipo_equipo
+db.createCollection("tipo_equipo", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["tip_equip_id"],
+            properties: {
+                tip_equip_id: {
+                    bsonType: "int",
+                    description: "el id del tipo de equipo es requerido"
+                },
+                tip_equip_nombre: {
+                    bsonType: "string",
+                    description: "el nombre del tipo de equipo es requerido"
+                }
+            }
+        }
+    }
+});
+db.tipo_equipo.insertMany([
+    {
+        tip_equip_id: siguienteId("tipo_equipo"),
+        tip_equip_nombre: "Computador",
+    },
+    {
+        tip_equip_id: siguienteId("tipo_equipo"),
+        tip_equip_nombre: "Teclado",
+    },
+    {
+        tip_equip_id: siguienteId("tipo_equipo"),
+        tip_equip_nombre: "Mouse",
+    },
+    {
+        tip_equip_id: siguienteId("tipo_equipo"),
+        tip_equip_nombre: "Diadema",
+    }
+]);
+
+
+// Coleccon equipo
+db.createCollection("equipo", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id_equipo", "tipo", "cantidad", "lugar"],
+            properties: {
+                id_equipo: {
+                    bsonType: "string",
+                    description: "el id del equipo es requerido"
+                },
+                tipo: {
+                    bsonType: "int",
+                    description: "el tipo de equipo es requerido"
+                },
+                cantidad: {
+                    bsonType: "int",
+                    description: "la cantidad de equipo es requerida"
+                },
+                lugar: {
+                    bsonType: "int",
+                    description: "el lugar del equipo es requerido"
+                }
+            }
+        }
+    }
+});
+
+// Coleccion trainer
+db.createCollection("trainer", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["train_id", "train_nombre", "email_personal", "email_corporativo", "telefono_movil", "telefono_empresa", "telefono_movil_empresarial"],
+            properties: {
+                train_id: {
+                    bsonType: "string",
+                    description: "el id del entrenador es requerido"
+                },
+                train_nombre: {
+                    bsonType: "string",
+                    description: "el nombre del entrenador es requerido"
+                },
+                email_personal: {
+                    bsonType: "string",
+                    description: "el correo personal del entrenador es requerido"
+                },
+                email_corporativo: {
+                    bsonType: "string",
+                    description: "el correo corporativo del entrenador es requerido"
+                },
+                telefono_movil: {
+                    bsonType: "string",
+                    description: "el teléfono móvil del entrenador es requerido"
+                },
+                telefono_residencia: {
+                    bsonType: "string",
+                    description: "teléfono de residencia del entrenador"
+                },
+                telefono_empresa: {
+                    bsonType: "string",
+                    description: "teléfono de la empresa del entrenador es requerido"
+                },
+                telefono_movil_empresarial: {
+                    bsonType: "string",
+                    description: "teléfono móvil empresarial del entrenador es requerido"
+                }
+            }
+        }
+    }
+});
+
+// Coleccion Insidencias
+db.createCollection("insidencias", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["categoria_insi", "tipo_insi", "descr_insi", "trainer_insi", "equipo_insi"],
+            properties: {
+                categoria_insi: {
+                    bsonType: "int",
+                    description: "la categoría de la incidencia es requerida"
+                },
+                tipo_insi: {
+                    bsonType: "int",
+                    description: "el tipo de incidencia es requerido"
+                },
+                descr_insi: {
+                    bsonType: "string",
+                    description: "la descripción de la incidencia es requerida"
+                },
+                fecha_insi: {
+                    bsonType: "date",
+                    description: "la fecha de la incidencia"
+                },
+                trainer_insi: {
+                    bsonType: "string",
+                    description: "el id del entrenador relacionado con la incidencia es requerido"
+                },
+                equipo_insi: {
+                    bsonType: "string",
+                    description: "el id del equipo relacionado con la incidencia es requerido"
+                }
+            }
+        }
+    }
+});
+
+
+
+
+
+
