@@ -8,7 +8,8 @@ db.counters.insertMany([
     { _id: "tipoId", sequence_value: 0 },
     { _id: "areasId", sequence_value: 0 },
     { _id: "lugaresId", sequence_value: 0 },
-    { _id: "tipo_equipoId", sequence_value: 0 }
+    { _id: "tipo_equipoId", sequence_value: 0 },
+    { _id: "insidenciasId", sequence_value: 0 }
 ]);
 function siguienteId(coleccion) {
     const sequenceDocument = db.counters.findOneAndUpdate(
@@ -217,7 +218,7 @@ db.createCollection("equipo", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            required: ["id_equipo", "tipo", "cantidad", "lugar"],
+            required: ["id_equipo", "tipo", "lugar"],
             properties: {
                 id_equipo: {
                     bsonType: "string",
@@ -227,10 +228,6 @@ db.createCollection("equipo", {
                     bsonType: "int",
                     description: "el tipo de equipo es requerido"
                 },
-                cantidad: {
-                    bsonType: "int",
-                    description: "la cantidad de equipo es requerida"
-                },
                 lugar: {
                     bsonType: "int",
                     description: "el lugar del equipo es requerido"
@@ -239,6 +236,58 @@ db.createCollection("equipo", {
         }
     }
 });
+db.equipo.insertMany([
+    {
+        id_equipo: "TC-102",
+        tipo: 1,
+        lugar: 5
+    },
+    {
+        id_equipo: "TC-103",
+        tipo: 2,
+        lugar: 3
+    },
+    {
+        id_equipo: "TC-104",
+        tipo: 3,
+        lugar: 2
+    },
+    {
+        id_equipo: "TC-105",
+        tipo: 4,
+        lugar: 1
+    },
+    {
+        id_equipo: "TC-106",
+        tipo: 1,
+        lugar: 4
+    },
+    {
+        id_equipo: "TC-107",
+        tipo: 3,
+        lugar: 6
+    },
+    {
+        id_equipo: "TC-108",
+        tipo: 2,
+        lugar: 4
+    },
+    {
+        id_equipo: "TC-109",
+        tipo: 1,
+        lugar: 3
+    },
+    {
+        id_equipo: "TC-110",
+        tipo: 4,
+        lugar: 6
+    },
+    {
+        id_equipo: "TC-111",
+        tipo: 3,
+        lugar: 2
+    }
+]);
 
 // Coleccion trainer
 db.createCollection("trainer", {
@@ -249,6 +298,7 @@ db.createCollection("trainer", {
             properties: {
                 train_id: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "el id del entrenador es requerido"
                 },
                 train_nombre: {
@@ -265,32 +315,71 @@ db.createCollection("trainer", {
                 },
                 telefono_movil: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "el teléfono móvil del entrenador es requerido"
                 },
                 telefono_residencia: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "teléfono de residencia del entrenador"
                 },
                 telefono_empresa: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "teléfono de la empresa del entrenador es requerido"
                 },
                 telefono_movil_empresarial: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "teléfono móvil empresarial del entrenador es requerido"
                 }
             }
         }
     }
 });
+db.trainer.insertMany([
+    {
+        train_id: "1234567890",
+        train_nombre: "Juan Perez",
+        email_personal: "juan@gmail.com",
+        email_corporativo: "juan@empresa.com",
+        telefono_movil: "1234567890",
+        telefono_empresa: "9876543210",
+        telefono_movil_empresarial: "5555555555"
+    },
+    {
+        train_id: "9876543210",
+        train_nombre: "Maria Rodriguez",
+        email_personal: "maria@gmail.com",
+        email_corporativo: "maria@empresa.com",
+        telefono_movil: "5555555555",
+        telefono_residencia: "9999999999",
+        telefono_empresa: "1111111111",
+        telefono_movil_empresarial: "3333333333"
+    },
+    {
+        train_id: "5555555555",
+        train_nombre: "Carlos Sanchez",
+        email_personal: "carlos@gmail.com",
+        email_corporativo: "carlos@empresa.com",
+        telefono_movil: "7777777777",
+        telefono_empresa: "2222222222",
+        telefono_movil_empresarial: "4444444444"
+    }
+]);
+
 
 // Coleccion Insidencias
 db.createCollection("insidencias", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            required: ["categoria_insi", "tipo_insi", "descr_insi", "trainer_insi", "equipo_insi"],
+            required: ["id_insi", "categoria_insi", "tipo_insi", "descr_insi", "trainer_insi", "equipo_insi"],
             properties: {
+                id_insi: {
+                    bsonType: "int",
+                    description: "id de la insidencia"
+                },
                 categoria_insi: {
                     bsonType: "int",
                     description: "la categoría de la incidencia es requerida"
@@ -309,6 +398,7 @@ db.createCollection("insidencias", {
                 },
                 trainer_insi: {
                     bsonType: "string",
+                    pattern: "^[0-9]{10}$",
                     description: "el id del entrenador relacionado con la incidencia es requerido"
                 },
                 equipo_insi: {
@@ -319,7 +409,62 @@ db.createCollection("insidencias", {
         }
     }
 });
-
+db.insidencias.insertMany([
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 1,
+        tipo_insi: 2,
+        descr_insi: "Descripción de la incidencia 1",
+        fecha_insi: new Date("2023-05-21"),
+        trainer_insi: "1234567890",
+        equipo_insi: "TC-100"
+    },
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 2,
+        tipo_insi: 1,
+        descr_insi: "Descripción de la incidencia 2",
+        fecha_insi: new Date("2023-06-15"),
+        trainer_insi: "9876543210",
+        equipo_insi: "TC-103"
+    },
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 1,
+        tipo_insi: 3,
+        descr_insi: "Descripción de la incidencia 3",
+        fecha_insi: new Date("2023-07-10"),
+        trainer_insi: "5555555555",
+        equipo_insi: "TC-106"
+    },
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 2,
+        tipo_insi: 3,
+        descr_insi: "Descripción de la incidencia 4",
+        fecha_insi: new Date("2023-08-05"),
+        trainer_insi: "1234567890",
+        equipo_insi: "TC-104"
+    },
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 1,
+        tipo_insi: 1,
+        descr_insi: "Descripción de la incidencia 5",
+        fecha_insi: new Date("2023-08-12"),
+        trainer_insi: "5555555555",
+        equipo_insi: "TC-110"
+    },
+    {
+        id_insi: siguienteId("insidencias"),
+        categoria_insi: 2,
+        tipo_insi: 2,
+        descr_insi: "Descripción de la incidencia 6",
+        fecha_insi: new Date("2023-08-20"),
+        trainer_insi: "9876543210",
+        equipo_insi: "TC-102"
+    }
+]);
 
 
 
