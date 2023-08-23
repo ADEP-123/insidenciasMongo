@@ -27,6 +27,8 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 5. **SOLO Si** va a utilizar una conexion diferente a la de el proyecto Ejecutar el archivo query.mongodb que se encuentra dentro del directorio backend/db/scripts.
 
+**Nota**: Tenga en cuenta que la base de datos tiene informacion no real en las colecciones equipo, trainer e insidencias para poder comprobar los endpoints
+
 ### Si desea hacer uso de la API:
 
 1. Si desea crear la base de datos local siga los pases del apartado anterior hasta el paso 4.
