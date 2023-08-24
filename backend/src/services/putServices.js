@@ -5,6 +5,7 @@ import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
 import Tipo_equipo from "../entities/tipo_equipo.js";
 import Tipos from "../entities/tipos.js";
+import Trainers from "../entities/trainer.js";
 
 //Crud Areas
 const putAreaService = async (id, nombre) => {
@@ -48,10 +49,17 @@ const putTipo_equipoService = async (id, nombre) => {
     return result
 };
 
-//Crud tipo_equipo
+//Crud tipos
 const putTipoService = async (id, nombre) => {
     const tipo = new Tipos();
     const result = await tipo.putTipo(id, nombre);
+    return result
+};
+
+//Crud trainer
+const putTrainerService = async (id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) => {
+    const trainer = new Trainers();
+    const result = await trainer.putTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp);
     return result
 };
 
@@ -62,5 +70,6 @@ export {
     putInsidenciaService,
     putLugarService,
     putTipo_equipoService,
-    putTipoService
+    putTipoService,
+    putTrainerService
 }

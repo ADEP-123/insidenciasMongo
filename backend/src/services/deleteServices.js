@@ -5,6 +5,7 @@ import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
 import Tipo_equipo from "../entities/tipo_equipo.js";
 import Tipos from "../entities/tipos.js";
+import Trainers from "../entities/trainer.js";
 
 //Crud Areas
 const deleteAreaService = async (id) => {
@@ -48,10 +49,17 @@ const deleteTipo_equipoService = async (id) => {
     return result
 };
 
-//Crud tipo_equipo
+//Crud tipos
 const deleteTipoService = async (id) => {
     const tipo = new Tipos();
     const result = await tipo.deleteTipo(id);
+    return result
+};
+
+//Crud trainer
+const deleteTrainerService = async (id) => {
+    const trainer = new Trainers();
+    const result = await trainer.putTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp);
     return result
 };
 
@@ -62,5 +70,6 @@ export {
     deleteInsidenciaService,
     deleteLugarService,
     deleteTipo_equipoService,
-    deleteTipoService
+    deleteTipoService,
+    deleteTrainerService
 }
