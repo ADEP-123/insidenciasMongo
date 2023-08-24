@@ -20,12 +20,7 @@ __decorate([
     Expose({ name: "id" }),
     Transform(({ value, key }) => {
         if (value) {
-            if (Math.floor(value)) {
-                return value;
-            }
-            else {
-                throw { status: 400, message: `Formato del id incorrecto, debe ser numerico` };
-            }
+            return value;
         }
         else {
             return value;
