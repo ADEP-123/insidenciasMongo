@@ -212,7 +212,6 @@ db.tipo_equipo.insertMany([
     }
 ]);
 
-
 // Coleccon equipo
 db.createCollection("equipo", {
     validator: {
@@ -307,10 +306,12 @@ db.createCollection("trainer", {
                 },
                 email_personal: {
                     bsonType: "string",
+                    pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
                     description: "el correo personal del entrenador es requerido"
                 },
                 email_corporativo: {
                     bsonType: "string",
+                    pattern: "^[a-zA-Z0-9._%+-]+@campusland\\.com$",
                     description: "el correo corporativo del entrenador es requerido"
                 },
                 telefono_movil: {
@@ -342,32 +343,34 @@ db.trainer.insertMany([
         train_id: "1234567890",
         train_nombre: "Juan Perez",
         email_personal: "juan@gmail.com",
-        email_corporativo: "juan@empresa.com",
+        email_corporativo: "juan@campusland.com",
         telefono_movil: "1234567890",
         telefono_empresa: "9876543210",
+        telefono_residencia: "6076342569",
         telefono_movil_empresarial: "5555555555"
     },
     {
         train_id: "9876543210",
         train_nombre: "Maria Rodriguez",
         email_personal: "maria@gmail.com",
-        email_corporativo: "maria@empresa.com",
+        email_corporativo: "maria@campusland.com",
         telefono_movil: "5555555555",
         telefono_residencia: "9999999999",
         telefono_empresa: "1111111111",
+        telefono_residencia: "6076342529",
         telefono_movil_empresarial: "3333333333"
     },
     {
         train_id: "5555555555",
         train_nombre: "Carlos Sanchez",
         email_personal: "carlos@gmail.com",
-        email_corporativo: "carlos@empresa.com",
+        email_corporativo: "carlos@campusland.com",
         telefono_movil: "7777777777",
         telefono_empresa: "2222222222",
+        telefono_residencia: "6076342009",
         telefono_movil_empresarial: "4444444444"
     }
 ]);
-
 
 // Coleccion Insidencias
 db.createCollection("insidencias", {
