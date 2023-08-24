@@ -2,6 +2,7 @@ import Areas from "../entities/areas.js"
 import Categorias from "../entities/categorias.js";
 import Equipos from "../entities/equipo.js";
 import Insidencias from "../entities/insidencias.js";
+import Lugares from "../entities/lugares.js";
 
 //Crud areas
 const getAllAreasService = async () => {
@@ -53,7 +54,20 @@ const getInsidenciaByIdService = async (id) => {
     const insidencia = new Insidencias();
     const result = await insidencia.getInsidenciaById(id);
     return result
-};;
+};
+
+//Crud lugares
+const getAllLugaresService = async () => {
+    const lugar = new Lugares();
+    const result = await lugar.getAllLugares();
+    return result
+};
+
+const getLugarByIdService = async (id) => {
+    const lugar = new Lugares();
+    const result = await lugar.getLugarById(id);
+    return result
+};
 
 export {
     getAllAreasService,
@@ -63,5 +77,7 @@ export {
     getAllEquiposService,
     getEquipoByIdService,
     getAllInsidenciasService,
-    getInsidenciaByIdService
+    getInsidenciaByIdService,
+    getAllLugaresService,
+    getLugarByIdService
 }
