@@ -1,4 +1,4 @@
-import { putAreaService, putCategoriaService, putEquipoService } from "../services/putServices.js";
+import { putAreaService, putCategoriaService, putEquipoService, putInsidenciaService } from "../services/putServices.js";
 
 // Areas
 const putAreasController = async (req, res, next) => {
@@ -33,8 +33,20 @@ const putEquipoController = async (req, res, next) => {
     }
 };
 
+// Insidencias
+const putInsidenciasController = async (req, res, next) => {
+    try {
+        const { id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi } = req.query
+        const result = await putInsidenciaService(id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi);
+        res.status(200).json({ message: `categoria creada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 export {
     putAreasController,
     putCategoriasController,
-    putEquipoController
+    putEquipoController,
+    putInsidenciasController
 }

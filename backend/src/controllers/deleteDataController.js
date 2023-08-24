@@ -1,4 +1,4 @@
-import { deleteAreaService, deleteCategoriaService, deleteEquipoService } from "../services/deleteServices.js";
+import { deleteAreaService, deleteCategoriaService, deleteEquipoService, deleteInsidenciaService } from "../services/deleteServices.js";
 
 // Areas
 const deleteAreasController = async (req, res, next) => {
@@ -33,8 +33,21 @@ const deleteEquipoController = async (req, res, next) => {
     }
 };
 
+// Insidencias
+const deleteInsidenciasController = async (req, res, next) => {
+    try {
+        const { id_insi } = req.query
+        const result = await deleteInsidenciaService(id_insi);
+        res.status(200).json({ message: `categoria eliminada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 export {
     deleteAreasController,
     deleteCategoriasController,
-    deleteEquipoController
+    deleteEquipoController,
+    deleteInsidenciasController
 }

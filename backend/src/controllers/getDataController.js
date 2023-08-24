@@ -1,4 +1,4 @@
-import { getAllAreasService, getAllCategoriasService, getAllEquiposService, getAreaByIdService, getCategoriaByIdService, getEquipoByIdService } from "../services/getServices.js";
+import { getAllAreasService, getAllCategoriasService, getAllEquiposService, getAllInsidenciasService, getAreaByIdService, getCategoriaByIdService, getEquipoByIdService, getInsidenciaByIdService } from "../services/getServices.js";
 
 // Areas
 const getAreasController = async (req, res, next) => {
@@ -48,9 +48,26 @@ const getEquipoController = async (req, res, next) => {
     }
 };
 
+// Insidencias
+const getInsidenciasController = async (req, res, next) => {
+    try {
+        let result;
+        const { id_equipo } = req.query
+        if (id_equipo) {
+            result = await getInsidenciaByIdService(id_equipo);
+        } else {
+            result = await getAllInsidenciasService();
+        }
+        res.status(200).json({ message: `se han encontrado ${result.length} resultados`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 export {
     getAreasController,
     getCategoriasController,
-    getEquipoController
+    getEquipoController,
+    getInsidenciasController
 }
 
