@@ -76,16 +76,14 @@ class Trainers {
         }
     }
 
-    async postTrainer(nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) {
+    async postTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) {
         let session;
         try {
-            const nuevaSesion = await counter.getNewId("equipo")
-            const { newId, session: newSession } = nuevaSesion;
-            session = newSession;
+            session = await startTransaction();
             const trainerCollection = await collectionGen("trainer");
             const result = trainerCollection.insertOne(
                 {
-                    train_id: newId,
+                    train_id: id,
                     train_nombre: nombre,
                     email_personal: emailPers,
                     email_corporativo: emailCorp,

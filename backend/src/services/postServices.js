@@ -22,9 +22,9 @@ const postCategoriaService = async (nombre) => {
 };
 
 //Crud equipos
-const postEquipoService = async (tipo, lugar) => {
+const postEquipoService = async (id, tipo, lugar) => {
     const euipo = new Equipos();
-    const result = await euipo.postEquipo(tipo, lugar);
+    const result = await euipo.postEquipo(id, tipo, lugar);
     return result
 };
 
@@ -57,9 +57,9 @@ const postTipoService = async (nombre) => {
 };
 
 //Crud trainer
-const postTrainerService = async (nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) => {
+const postTrainerService = async (id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) => {
     const trainer = new Trainers();
-    const result = await trainer.postTrainer(nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp);
+    const result = await trainer.postTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp);
     return result
 };
 

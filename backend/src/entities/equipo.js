@@ -66,16 +66,14 @@ class Equipos {
         }
     }
 
-    async postEquipo(tipo, lugar) {
+    async postEquipo(id, tipo, lugar) {
         let session;
         try {
-            const nuevaSesion = await counter.getNewId("equipo")
-            const { newId, session: newSession } = nuevaSesion;
-            session = newSession;
+            session = await startTransaction();
             const equipoCollection = await collectionGen("equipo");
             const result = equipoCollection.insertOne(
                 {
-                    id_equipo: newId,
+                    id_equipo: id,
                     tipo: tipo,
                     lugar: lugar
                 }
