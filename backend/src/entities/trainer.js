@@ -74,7 +74,7 @@ class Trainers {
         }
     }
 
-    async postTrainer(nombre, emailPers, emailCorp, telfMov, telfEmp, telfMovEmp) {
+    async postTrainer(nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) {
         let session;
         try {
             const nuevaSesion = await counter.getNewId("equipo")
@@ -88,6 +88,7 @@ class Trainers {
                     email_personal: emailPers,
                     email_corporativo: emailCorp,
                     telefono_movil: telfMov,
+                    telefono_residencia: telfRes,
                     telefono_empresa: telfEmp,
                     telefono_movil_empresarial: telfMovEmp
                 }
@@ -117,11 +118,11 @@ class Trainers {
                 },
                 {
                     $set: {
-                        tipo: tipo,
                         train_nombre: nombre,
                         email_personal: emailPers,
                         email_corporativo: emailCorp,
                         telefono_movil: telfMov,
+                        telefono_residencia: telfRes,
                         telefono_empresa: telfEmp,
                         telefono_movil_empresarial: telfMovEmp
                     }
