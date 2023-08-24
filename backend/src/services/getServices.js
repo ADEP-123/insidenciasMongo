@@ -1,5 +1,6 @@
 import Areas from "../entities/areas.js"
 import Categorias from "../entities/categorias.js";
+import Equipos from "../entities/equipo.js";
 
 //Crud areas
 const getAllAreasService = async () => {
@@ -51,9 +52,9 @@ const postCategoriaService = async (nombre) => {
     return result
 };
 
-const putCategoriaService = async (id,nombre) => {
+const putCategoriaService = async (id, nombre) => {
     const categoria = new Categorias();
-    const result = await categoria.putCategoria(id,nombre);
+    const result = await categoria.putCategoria(id, nombre);
     return result
 };
 
@@ -63,6 +64,36 @@ const deleteCategoriaService = async (id) => {
     return result
 };
 
+//Crud categorias
+const getAllEquiposService = async () => {
+    const euipo = new Equipos();
+    const result = await euipo.getAllEquipos();
+    return result
+};
+
+const getEquipoByIdService = async (id) => {
+    const euipo = new Equipos();
+    const result = await euipo.getEquipoById(id);
+    return result
+};
+
+const postEquipoService = async (tipo, lugar) => {
+    const euipo = new Equipos();
+    const result = await euipo.postEquipo(tipo, lugar);
+    return result
+};
+
+const putEquipoService = async (id, tipo, lugar) => {
+    const euipo = new Equipos();
+    const result = await euipo.putEquipo(id, tipo, lugar);
+    return result
+};
+
+const deleteEquipoService = async (id) => {
+    const euipo = new Equipos();
+    const result = await euipo.deleteEquipo(id);
+    return result
+};
 
 
 export {
@@ -75,5 +106,10 @@ export {
     getCategoriaByIdService,
     postCategoriaService,
     putCategoriaService,
-    deleteCategoriaService
+    deleteCategoriaService,
+    getAllEquiposService,
+    getEquipoByIdService,
+    postEquipoService,
+    putEquipoService,
+    deleteEquipoService
 }
