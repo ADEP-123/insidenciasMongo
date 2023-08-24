@@ -44,10 +44,22 @@ const deleteInsidenciasController = async (req, res, next) => {
     }
 };
 
+// Lugares
+const deleteLugaresController = async (req, res, next) => {
+    try {
+        const { lugar_id } = req.query
+        const result = await deleteLugaresController(lugar_id);
+        res.status(200).json({ message: `categoria eliminada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 
 export {
     deleteAreasController,
     deleteCategoriasController,
     deleteEquipoController,
-    deleteInsidenciasController
+    deleteInsidenciasController,
+    deleteLugaresController
 }

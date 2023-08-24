@@ -1,4 +1,4 @@
-import { postAreaService, postCategoriaService, postInsidenciaService } from "../services/postServices.js";
+import { postAreaService, postCategoriaService, postInsidenciaService, postLugarService } from "../services/postServices.js";
 
 // Areas
 const postAreasController = async (req, res, next) => {
@@ -44,10 +44,22 @@ const postInsidenciasController = async (req, res, next) => {
     }
 };
 
+// Lugares
+const postLugaresController = async (req, res, next) => {
+    try {
+        const { area_lugar, lugar_nombre } = req.query
+        const result = await postLugarService(area_lugar, lugar_nombre);
+        res.status(200).json({ message: `categoria creada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 
 export {
     postAreasController,
     postCategoriasController,
     postEquipoController,
-    postInsidenciasController
+    postInsidenciasController,
+    postLugaresController
 }
