@@ -109,7 +109,7 @@ class Trainers {
         }
     }
 
-    async putTrainer(id, nombre, emailPers, emailCorp, telfMov, telfEmp, telfMovEmp) {
+    async putTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp) {
         let session;
         try {
             session = await startTransaction();
