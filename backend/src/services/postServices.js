@@ -3,6 +3,7 @@ import Categorias from "../entities/categorias.js";
 import Equipos from "../entities/equipo.js";
 import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
+import Tipo_equipo from "../entities/tipo_equipo.js";
 
 //Crud Areas
 const postAreaService = async (nombre) => {
@@ -39,10 +40,18 @@ const postLugarService = async (nombre, area) => {
     return result
 }
 
+//Crud tipo_equipo
+const postTipo_equipoService = async (nombre) => {
+    const tipoEquipo = new Tipo_equipo();
+    const result = await tipoEquipo.postTipo_equipo(nombre);
+    return result
+};
+
 export {
     postAreaService,
     postCategoriaService,
     postEquipoService,
     postInsidenciaService,
-    postLugarService
+    postLugarService,
+    postTipo_equipoService
 }
