@@ -1,6 +1,7 @@
 import Areas from "../entities/areas.js"
 import Categorias from "../entities/categorias.js";
 import Equipos from "../entities/equipo.js";
+import Insidencias from "../entities/insidencias.js";
 
 //Crud areas
 const getAllAreasService = async () => {
@@ -12,24 +13,6 @@ const getAllAreasService = async () => {
 const getAreaByIdService = async (id) => {
     const area = new Areas();
     const result = await area.getAreaById(id);
-    return result
-};
-
-const postAreaService = async (nombre) => {
-    const area = new Areas();
-    const result = await area.postArea(nombre);
-    return result
-};
-
-const putAreaService = async (id, nombre) => {
-    const area = new Areas();
-    const result = await area.putArea(id, nombre);
-    return result
-};
-
-const deleteAreaService = async (id) => {
-    const area = new Areas();
-    const result = await area.deleteArea(id);
     return result
 };
 
@@ -46,25 +29,7 @@ const getCategoriaByIdService = async (id) => {
     return result
 };
 
-const postCategoriaService = async (nombre) => {
-    const categoria = new Categorias();
-    const result = await categoria.postCategoria(nombre);
-    return result
-};
-
-const putCategoriaService = async (id, nombre) => {
-    const categoria = new Categorias();
-    const result = await categoria.putCategoria(id, nombre);
-    return result
-};
-
-const deleteCategoriaService = async (id) => {
-    const categoria = new Categorias();
-    const result = await categoria.deleteCategoria(id);
-    return result
-};
-
-//Crud categorias
+//Crud equipos
 const getAllEquiposService = async () => {
     const euipo = new Equipos();
     const result = await euipo.getAllEquipos();
@@ -77,39 +42,26 @@ const getEquipoByIdService = async (id) => {
     return result
 };
 
-const postEquipoService = async (tipo, lugar) => {
-    const euipo = new Equipos();
-    const result = await euipo.postEquipo(tipo, lugar);
+//Crud insidencias
+const getAllInsidenciasService = async () => {
+    const insidencia = new Insidencias();
+    const result = await insidencia.getAllInsidencias();
     return result
 };
 
-const putEquipoService = async (id, tipo, lugar) => {
-    const euipo = new Equipos();
-    const result = await euipo.putEquipo(id, tipo, lugar);
+const getInsidenciaByIdService = async (id) => {
+    const insidencia = new Insidencias();
+    const result = await insidencia.getInsidenciaById(id);
     return result
-};
-
-const deleteEquipoService = async (id) => {
-    const euipo = new Equipos();
-    const result = await euipo.deleteEquipo(id);
-    return result
-};
-
+};;
 
 export {
     getAllAreasService,
     getAreaByIdService,
-    postAreaService,
-    putAreaService,
-    deleteAreaService,
     getAllCategoriasService,
     getCategoriaByIdService,
-    postCategoriaService,
-    putCategoriaService,
-    deleteCategoriaService,
     getAllEquiposService,
     getEquipoByIdService,
-    postEquipoService,
-    putEquipoService,
-    deleteEquipoService
+    getAllInsidenciasService,
+    getInsidenciaByIdService
 }
