@@ -19,7 +19,7 @@ __decorate([
     Expose({ name: "id" }),
     Transform(({ value, key }) => {
         if (value) {
-            if (/^[0-9]{10}$/.test(value)) {
+            if (Math.floor(value)) {
                 return value;
             }
             else {
