@@ -4,6 +4,7 @@ import Equipos from "../entities/equipo.js";
 import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
 import Tipo_equipo from "../entities/tipo_equipo.js";
+import Tipos from "../entities/tipos.js";
 
 //Crud areas
 const getAllAreasService = async () => {
@@ -83,6 +84,20 @@ const getTipo_equipoByIdService = async (id) => {
     return result
 };
 
+//Crud tipo_equipo
+const getAllTiposService = async () => {
+    const tipo = new Tipos();
+    const result = await tipo.getAllTipos();
+    return result
+};
+
+const getTipoByIdService = async (id) => {
+    const tipo = new Tipos();
+    const result = await tipo.getTipoById(id);
+    return result
+};
+
+
 export {
     getAllAreasService,
     getAreaByIdService,
@@ -95,5 +110,7 @@ export {
     getAllLugaresService,
     getLugarByIdService,
     getAllTipo_equipoService,
-    getTipo_equipoByIdService
+    getTipo_equipoByIdService,
+    getAllTiposService,
+    getTipoByIdService
 }

@@ -4,6 +4,7 @@ import Equipos from "../entities/equipo.js";
 import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
 import Tipo_equipo from "../entities/tipo_equipo.js";
+import Tipos from "../entities/tipos.js";
 
 //Crud Areas
 const putAreaService = async (id, nombre) => {
@@ -47,11 +48,19 @@ const putTipo_equipoService = async (id, nombre) => {
     return result
 };
 
+//Crud tipo_equipo
+const putTipoService = async (id, nombre) => {
+    const tipo = new Tipos();
+    const result = await tipo.putTipo(id, nombre);
+    return result
+};
+
 export {
     putAreaService,
     putCategoriaService,
     putEquipoService,
     putInsidenciaService,
     putLugarService,
-    putTipo_equipoService
+    putTipo_equipoService,
+    putTipoService
 }

@@ -4,6 +4,7 @@ import Equipos from "../entities/equipo.js";
 import Insidencias from "../entities/insidencias.js";
 import Lugares from "../entities/lugares.js";
 import Tipo_equipo from "../entities/tipo_equipo.js";
+import Tipos from "../entities/tipos.js";
 
 //Crud Areas
 const deleteAreaService = async (id) => {
@@ -47,11 +48,19 @@ const deleteTipo_equipoService = async (id) => {
     return result
 };
 
+//Crud tipo_equipo
+const deleteTipoService = async (id) => {
+    const tipo = new Tipos();
+    const result = await tipo.deleteTipo(id);
+    return result
+};
+
 export {
     deleteAreaService,
     deleteCategoriaService,
     deleteEquipoService,
     deleteInsidenciaService,
     deleteLugarService,
-    deleteTipo_equipoService
+    deleteTipo_equipoService,
+    deleteTipoService
 }
