@@ -1,4 +1,5 @@
 import Areas from "../entities/areas.js"
+import Categorias from "../entities/categorias.js";
 
 //Crud areas
 const getAllAreasService = async () => {
@@ -31,10 +32,48 @@ const deleteAreaService = async (id) => {
     return result
 };
 
+//Crud categorias
+const getAllCategoriasService = async () => {
+    const categoria = new Categorias();
+    const result = await categoria.getAllCategorias();
+    return result
+};
+
+const getCategoriaByIdService = async (id) => {
+    const categoria = new Categorias();
+    const result = await categoria.getCategoriaById(id);
+    return result
+};
+
+const postCategoriaService = async (nombre) => {
+    const categoria = new Categorias();
+    const result = await categoria.postCategoria(nombre);
+    return result
+};
+
+const putCategoriaService = async (id,nombre) => {
+    const categoria = new Categorias();
+    const result = await categoria.putCategoria(id,nombre);
+    return result
+};
+
+const deleteCategoriaService = async (id) => {
+    const categoria = new Categorias();
+    const result = await categoria.deleteCategoria(id);
+    return result
+};
+
+
+
 export {
     getAllAreasService,
     getAreaByIdService,
     postAreaService,
     putAreaService,
-    deleteAreaService
+    deleteAreaService,
+    getAllCategoriasService,
+    getCategoriaByIdService,
+    postCategoriaService,
+    putCategoriaService,
+    deleteCategoriaService
 }
