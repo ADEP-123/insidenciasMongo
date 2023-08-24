@@ -22,7 +22,20 @@ const postCategoriasController = async (req, res, next) => {
     }
 };
 
+// Equipo
+const postEquipoController = async (req, res, next) => {
+    try {
+        const { id_equipo, tipo, lugar } = req.query
+        const result = await postCategoriaService(id_equipo, tipo, lugar);
+        res.status(200).json({ message: `categoria creada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 export {
     postAreasController,
-    postCategoriasController
+    postCategoriasController,
+    postEquipoController
 }
