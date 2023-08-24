@@ -18,6 +18,7 @@ class Trainers {
                         emailPers: "$email_personal",
                         emailCorp: "$email_corporativo",
                         telfMov: "$telefono_movil",
+                        telfRes: "$telefono_residencia",
                         telfEmp: "$telefono_empresa",
                         telfMovEmp: "$telefono_movil_empresarial",
                         _id: 0
@@ -51,6 +52,7 @@ class Trainers {
                         emailPers: "$email_personal",
                         emailCorp: "$email_corporativo",
                         telfMov: "$telefono_movil",
+                        telfRes: "$telefono_residencia",
                         telfEmp: "$telefono_empresa",
                         telfMovEmp: "$telefono_movil_empresarial",
                         _id: 0
