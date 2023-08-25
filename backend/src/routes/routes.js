@@ -1,11 +1,10 @@
 import { Router } from "express";
+import { appToken } from "../services/tokenGenerator.js";
 
 
 const initApiRoutes = () => {
     const router = Router();
-    router.use("/", (req, res, next) => {
-        res.send("Trabajando")
-    })
+    router.use("/login", appToken)
     return router
 }
 
