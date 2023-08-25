@@ -19,11 +19,13 @@ appToken.use("/:coleccion", async (req, res) => {
     try {
         let inst = plainToClass(eval(`${req.params.coleccion}DTO`), {}, { ignoreDecorators: true })
         const encoder = new TextEncoder();
-        const jwtconstructor = new SignJWT(Object.assign({}, classToPlain(inst)));
+        const entidadDTO = { entidad: `${req.params.coleccion}DTO` }
+        const jwtconstructor = new SignJWT(Object.assign({}, Object.assign(classToPlain(inst), entidadDTO)));
+        // console.log(jwtconstructor);
         const jwt = await jwtconstructor
             .setProtectedHeader({ alg: "HS256", typ: "JWT" })
             .setIssuedAt()
-            .setExpirationTime("30m")
+            .setExpirationTime("60h")
             .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
         req.data = jwt;
         res.status(201).send({ status: 201, message: jwt });
