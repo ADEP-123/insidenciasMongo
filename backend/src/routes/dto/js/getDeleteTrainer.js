@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Expose, Transform } from "class-transformer";
-export class trainerDTO {
+export class getDeleteTrainerDTO {
     constructor(data) {
         Object.assign(this, data);
         this.train_id = 1;
@@ -30,4 +30,4 @@ __decorate([
         }
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], trainerDTO.prototype, "train_id", void 0);
+], getDeleteTrainerDTO.prototype, "train_id", void 0);
