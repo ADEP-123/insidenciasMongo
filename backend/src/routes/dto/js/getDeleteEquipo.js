@@ -21,7 +21,7 @@ __decorate([
             return value;
         }
         else {
-            throw { status: 400, message: `El id es requerido` };
+            return value;
         }
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
