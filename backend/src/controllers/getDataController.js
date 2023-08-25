@@ -6,7 +6,7 @@ const getAreasController = async (req, res, next) => {
         let result;
         const { area_id } = req.query
         if (area_id) {
-            result = await getAreaByIdService(area_id);
+            result = await getAreaByIdService(Number(area_id));
         } else {
             result = await getAllAreasService();
         }
@@ -22,7 +22,7 @@ const getCategoriasController = async (req, res, next) => {
         let result;
         const { cat_id } = req.query
         if (cat_id) {
-            result = await getCategoriaByIdService(cat_id);
+            result = await getCategoriaByIdService(Number(cat_id));
         } else {
             result = await getAllCategoriasService();
         }
@@ -54,7 +54,7 @@ const getInsidenciasController = async (req, res, next) => {
         let result;
         const { id_equipo } = req.query
         if (id_equipo) {
-            result = await getInsidenciaByIdService(id_equipo);
+            result = await getInsidenciaByIdService(Number(id_equipo));
         } else {
             result = await getAllInsidenciasService();
         }
@@ -70,7 +70,7 @@ const getLugaresController = async (req, res, next) => {
         let result;
         const { lugar_id } = req.query
         if (lugar_id) {
-            result = await getLugarByIdService(lugar_id);
+            result = await getLugarByIdService(Number(lugar_id));
         } else {
             result = await getAllLugaresService();
         }
@@ -86,7 +86,7 @@ const getTipoEquipoController = async (req, res, next) => {
         let result;
         const { tip_equip_id } = req.query
         if (tip_equip_id) {
-            result = await getTipo_equipoByIdService(tip_equip_id);
+            result = await getTipo_equipoByIdService(Number(tip_equip_id));
         } else {
             result = await getAllTipo_equipoService();
         }
@@ -102,7 +102,7 @@ const getTiposController = async (req, res, next) => {
         let result;
         const { tip_id } = req.query
         if (tip_id) {
-            result = await getTipoByIdService(tip_id);
+            result = await getTipoByIdService(Number(tip_id));
         } else {
             result = await getAllTiposService();
         }
