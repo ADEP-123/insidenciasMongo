@@ -1,4 +1,4 @@
-import { postAreaService, postCategoriaService, postInsidenciaService, postLugarService, postTipoService, postTipo_equipoService } from "../services/postServices.js";
+import { postAreaService, postCategoriaService, postInsidenciaService, postLugarService, postTipoService, postTipo_equipoService, postTrainerService } from "../services/postServices.js";
 
 // Areas
 const postAreasController = async (req, res, next) => {
@@ -27,7 +27,7 @@ const postEquipoController = async (req, res, next) => {
     try {
         const { id_equipo, tipo, lugar } = req.query
         const result = await postCategoriaService(id_equipo, tipo, lugar);
-        res.status(200).json({ message: `categoria creada con exito`, result })
+        res.status(200).json({ message: `Equipo creado con exito`, result })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -38,7 +38,7 @@ const postInsidenciasController = async (req, res, next) => {
     try {
         const { id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi } = req.query
         const result = await postInsidenciaService(id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi);
-        res.status(200).json({ message: `categoria creada con exito`, result })
+        res.status(200).json({ message: `Insidencia creada con exito`, result })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -49,7 +49,7 @@ const postLugaresController = async (req, res, next) => {
     try {
         const { area_lugar, lugar_nombre } = req.query
         const result = await postLugarService(area_lugar, lugar_nombre);
-        res.status(200).json({ message: `categoria creada con exito`, result })
+        res.status(200).json({ message: `Lugar creado con exito`, result })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -60,7 +60,7 @@ const postTipoEquipoController = async (req, res, next) => {
     try {
         const { tip_equip_nombre } = req.query
         const result = await postTipo_equipoService(tip_equip_nombre);
-        res.status(200).json({ message: `categoria creada con exito`, result })
+        res.status(200).json({ message: `Tipo equipo creado con exito`, result })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -71,7 +71,18 @@ const postTiposController = async (req, res, next) => {
     try {
         const { tip_nombre } = req.query
         const result = await postTipoService(tip_nombre);
-        res.status(200).json({ message: `categoria creada con exito`, result })
+        res.status(200).json({ message: `Tipo de insidencia creada con exito`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Trainer
+const postTrainerController = async (req, res, next) => {
+    try {
+        const { train_id, train_nombre, email_personal, email_corporativo, telefono_movil, telefono_empresa, telefono_residencia, telefono_movil_empresarial } = req.query
+        const result = await postTrainerService(train_id, train_nombre, email_personal, email_corporativo, telefono_movil, telefono_empresa, telefono_residencia, telefono_movil_empresarial);
+        res.status(200).json({ message: `Trainer creado con exito`, result })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -84,5 +95,6 @@ export {
     postInsidenciasController,
     postLugaresController,
     postTipoEquipoController,
-    postTiposController
+    postTiposController,
+    postTrainerController
 }
