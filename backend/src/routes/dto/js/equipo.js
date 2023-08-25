@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Expose, Transform } from "class-transformer";
-export class categoriasDTO {
+export class equipoDTO {
     constructor(data) {
         Object.assign(this, data);
         this.id_equipo = 1;
@@ -27,7 +27,7 @@ __decorate([
         }
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], categoriasDTO.prototype, "id_equipo", void 0);
+], equipoDTO.prototype, "id_equipo", void 0);
 __decorate([
     Expose({ name: "tipoId" }),
     Transform(({ value, key }) => {
@@ -44,7 +44,7 @@ __decorate([
         }
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], categoriasDTO.prototype, "tipo", void 0);
+], equipoDTO.prototype, "tipo", void 0);
 __decorate([
     Expose({ name: "lugarId" }),
     Transform(({ value, key }) => {
@@ -61,4 +61,4 @@ __decorate([
         }
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], categoriasDTO.prototype, "lugar", void 0);
+], equipoDTO.prototype, "lugar", void 0);
