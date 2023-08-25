@@ -1,4 +1,4 @@
-import { getAllAreasService, getAllCategoriasService, getAllEquiposService, getAllInsidenciasService, getAllLugaresService, getAreaByIdService, getCategoriaByIdService, getEquipoByIdService, getInsidenciaByIdService, getLugarByIdService } from "../services/getServices.js";
+import { getAllAreasService, getAllCategoriasService, getAllEquiposService, getAllInsidenciasService, getAllLugaresService, getAllTipo_equipoService, getAreaByIdService, getCategoriaByIdService, getEquipoByIdService, getInsidenciaByIdService, getLugarByIdService, getTipo_equipoByIdService } from "../services/getServices.js";
 
 // Areas
 const getAreasController = async (req, res, next) => {
@@ -80,11 +80,29 @@ const getLugaresController = async (req, res, next) => {
     }
 };
 
+// TipoEquipo
+const getTipoEquipoController = async (req, res, next) => {
+    try {
+        let result;
+        const { tip_equip_id } = req.query
+        if (tip_equip_id) {
+            result = await getTipo_equipoByIdService(tip_equip_id);
+        } else {
+            result = await getAllTipo_equipoService();
+        }
+        res.status(200).json({ message: `se han encontrado ${result.length} resultados`, result })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 
 export {
     getAreasController,
     getCategoriasController,
     getEquipoController,
-    getInsidenciasController
+    getInsidenciasController,
+    getLugaresController,
+    getTipoEquipoController
 }
 
