@@ -36,9 +36,9 @@ const postInsidenciaService = async (categoriaId, tipoId, descripciom, fecha, tr
 };
 
 //Crud lugares
-const postLugarService = async (nombre, area) => {
+const postLugarService = async (area, nombre) => {
     const lugar = new Lugares();
-    const result = await lugar.postLugar(nombre, area);
+    const result = await lugar.postLugar(area,nombre);
     return result
 }
 

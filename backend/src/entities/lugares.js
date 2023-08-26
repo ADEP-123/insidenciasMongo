@@ -66,17 +66,17 @@ class Lugares {
         }
     }
 
-    async postLugar(nombre, area) {
+    async postLugar(area,nombre) {
         let session;
         try {
-            const nuevaSesion = await counter.getNewId("lugar")
+            const nuevaSesion = await counter.getNewId("lugares")
             const { newId, session: newSession } = nuevaSesion;
             session = newSession;
             const lugaresCollection = await collectionGen("lugares");
-            const result = lugaresCollection.insertOne(
+            const result = await lugaresCollection.insertOne(
                 {
-                    lugar_id: newId,
-                    area_lugar: area,
+                    lugar_id: Number(newId),
+                    area_lugar: Number(area),
                     lugar_nombre: nombre
                 }
             );
