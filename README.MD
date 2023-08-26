@@ -274,6 +274,56 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Data: query
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion insidencias.
      - Ej: http://127.10.10.10:5010/campus/delete/insidencias/?id=7
+
+5. Coleccion Lugares:
+
+   - Tipo token esperado: lugares
+
+     5.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/lugares
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todos los lugares o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/delete/lugares?id=1
+
+     5.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/lugares
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion lugares.
+     - Ej: 
+          ```json
+          {
+          "lugar": "Prueba Actrualizada",
+          "areaId": 2
+          }
+          ```
+
+     5.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/lugares
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion lugares.
+     - Ej: 
+          ```json
+          {
+          "id": 7,
+          "lugar": "Prueba Actrualizada",
+          "areaId": 2
+          }
+          ```
+
+     5.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/lugares
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion lugares.
+     - Ej: http://127.10.10.10:5010/campus/delete/lugares/?id=7
+
 ---
 
 # Creador:
