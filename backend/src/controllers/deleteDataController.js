@@ -34,7 +34,7 @@ const deleteCategoriasController = async (req, res, next) => {
 const deleteEquipoController = async (req, res, next) => {
     try {
         const { id_equipo } = req.query
-        const result = await deleteEquipoService(Number(id_equipo));
+        const result = await deleteEquipoService(id_equipo);
         if (result.deletedCount == 0) {
             res.status(500).json({ message: `no se ha encontrado ninguna equipo con ese id`, result })
         } else {
@@ -109,7 +109,7 @@ const deleteTiposController = async (req, res, next) => {
 const deleteTrainerController = async (req, res, next) => {
     try {
         const { train_id } = req.query
-        const result = await deleteTrainerService(Number(train_id));
+        const result = await deleteTrainerService(train_id);
         if (result.deletedCount == 0) {
             res.status(500).json({ message: `no se ha encontrado ningun trainer con ese id`, result })
         } else {
