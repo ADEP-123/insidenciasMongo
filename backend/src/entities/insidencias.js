@@ -77,17 +77,17 @@ class Insidencias {
     async postInsidencia(categoriaId, tipoId, descripciom, fecha, trainerId, equipoId) {
         let session;
         try {
-            const nuevaSesion = await counter.getNewId("equipo")
+            const nuevaSesion = await counter.getNewId("insidencias")
             const { newId, session: newSession } = nuevaSesion;
             session = newSession;
             const InsidenciasCollection = await collectionGen("insidencias");
             const result = InsidenciasCollection.insertOne(
                 {
-                    id_insi: newId,
+                    id_insi: Number(newId),
                     categoria_insi: categoriaId,
                     tipo_insi: tipoId,
                     descr_insi: descripciom,
-                    fecha_insi: fecha,
+                    fecha_insi: new Date(fecha),
                     trainer_insi: trainerId,
                     equipo_insi: equipoId
                 }
