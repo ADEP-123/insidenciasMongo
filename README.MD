@@ -120,7 +120,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion areas.
      - Ej: http://127.10.10.10:5010/campus/delete/areas/?id=1
 
-2. Coleccion Areas:
+2. Coleccion Categorias:
 
    - Tipo token esperado: categorias
 
@@ -168,17 +168,16 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion categorias.
      - Ej: http://127.10.10.10:5010/campus/delete/categorias/?id=3
 
-3. Coleccion Areas:
+3. Coleccion Equipo:
 
-   - Tipo token esperado: categorias
+   - Tipo token esperado: equipo
 
      3.1. Get:
 
-     - UrlDefault: http://127.10.10.10:5010/campus/get/equipo?id=TC-333
+     - UrlDefault: http://127.10.10.10:5010/campus/get/equipo
      - Metodo: get
      - Data: query
-     - Descripcion: Endpoint que permite obtener todas las categorias
-      o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Descripcion: Endpoint que permite obtener todas los equipos o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
      - Ej: http://127.10.10.10:5010/campus/get/equipo?id=TC-102
 
      3.2. Post:
@@ -218,6 +217,63 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Data: query
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion equipo.
      - Ej: http://127.10.10.10:5010/campus/delete/equipo/?id=TC-333
+
+4. Coleccion Insidencias:
+
+   - Tipo token esperado: insidencias
+
+     4.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/insidencias
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todas las insidencias o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/delete/insidencias?id=1
+
+     4.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/insidencias
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion insidencias.
+     - Ej: 
+          ```json
+          {
+            "categoriaId": 1,
+            "tipoId": 2,
+            "descripciom": "Descripción de la incidencia ejemplo actualizada",
+            "fecha": "2023-05-21 12:12:12",
+            "trainerId": "1234567890",
+            "equipoId": "TC-102"
+          }
+          ```
+
+     4.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/insidencias
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion insidencias.
+     - Ej: 
+          ```json
+          {
+            "id": 7,
+            "categoriaId": 1,
+            "tipoId": 2,
+            "descripciom": "Descripción de la incidencia ejemplo actualizada",
+            "fecha": "2023-05-21 12:12:12",
+            "trainerId": "1234567890",
+            "equipoId": "TC-102"
+          }
+          ```
+
+     4.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/insidencias
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion insidencias.
+     - Ej: http://127.10.10.10:5010/campus/delete/insidencias/?id=7
 ---
 
 # Creador:
