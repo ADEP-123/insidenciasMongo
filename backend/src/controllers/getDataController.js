@@ -52,9 +52,9 @@ const getEquipoController = async (req, res, next) => {
 const getInsidenciasController = async (req, res, next) => {
     try {
         let result;
-        const { id_equipo } = req.query
-        if (id_equipo) {
-            result = await getInsidenciaByIdService(Number(id_equipo));
+        const { id_insi } = req.query
+        if (id_insi) {
+            result = await getInsidenciaByIdService(Number(id_insi));
         } else {
             result = await getAllInsidenciasService();
         }
