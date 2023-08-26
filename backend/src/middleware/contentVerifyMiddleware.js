@@ -9,20 +9,27 @@ import { tipo_equipoDTO } from '../routes/dto/js/tipo_equipo.js';
 import { tiposDTO } from '../routes/dto/js/tipos.js';
 import { trainerDTO } from '../routes/dto/js/trainer.js';
 
-const contentMiddleware = (req, res, next) => {
+const contentMiddlewareAreas = (req, res, next) => {
     let { payload } = req.data;
     const { iat, exp, ...newPayload } = payload;
     const { entidad, ...finalPayload } = newPayload;
     payload = finalPayload;
-    // console.log("finalPayload: ", finalPayload);
-    // console.log(entidad);
-    let Clone = JSON.stringify(classToPlain(plainToClass(eval(entidad), {}, { ignoreDecorators: true })));
-    // console.log("Clone: ", Clone);
+    let Clone = JSON.stringify(classToPlain(plainToClass(areasDTO, {}, { ignoreDecorators: true })));
     let Verify = Clone === JSON.stringify(payload);
     (!Verify) ? res.status(406).send({ status: 406, message: "No Autorizado" }) : next();
 };
 
+const contentMiddlewareCategorias = (req, res, next) => {
+    let { payload } = req.data;
+    const { iat, exp, ...newPayload } = payload;
+    const { entidad, ...finalPayload } = newPayload;
+    payload = finalPayload;
+    let Clone = JSON.stringify(classToPlain(plainToClass(categoriasDTO, {}, { ignoreDecorators: true })));
+    let Verify = Clone === JSON.stringify(payload);
+    (!Verify) ? res.status(406).send({ status: 406, message: "No Autorizado" }) : next();
+};
 
 export {
-    contentMiddleware
+    contentMiddlewareAreas,
+    contentMiddlewareCategorias
 }
