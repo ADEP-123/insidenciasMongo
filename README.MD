@@ -67,7 +67,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
   - tipo_equipo
   - tipos
   - trainer
-- Ej: http://127.10.10.10:5010/campus/login/Usuarios
+- Ej: http://127.10.10.10:5010/campus/login/areas
 
 2. Copie el token que sera devuelto como mensaje y envielo dentro del header Authorization
 
@@ -75,7 +75,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
 
 1. Coleccion Areas:
 
-   - Tipo token esperado: Usuarios
+   - Tipo token esperado: areas
 
      1.1. Get:
 
@@ -90,40 +90,83 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - UrlDefault: http://127.10.10.10:5010/campus/post/areas
      - Metodo: post
      - Data: body
-
-     ```json
-     {
-       "nombre": "Nueva Area"
-     }
-     ```
-
      - Descripcion: Endpoint que permite crear un nuevo archivo en la coleccion area.
-     - Ej: http://127.10.10.10:5010/campus/post/areas
+     - Ej: 
+          ```json
+          {
+            "nombre": "Nueva Area"
+          }
+          ```
 
      1.3. Put:
 
      - UrlDefault: http://127.10.10.10:5010/campus/put/areas
      - Metodo: put
      - Data: body
-
-     ```json
-     {
-       "id": 4,
-       "nombre": "Nueva Area"
-     }
-     ```
-
      - Descripcion: Endpoint que permite actualizar un archivo en la coleccion area.
-     - Ej: http://127.10.10.10:5010/campus/put/areas
+     - Ej: 
+          ```json
+          {
+            "id": 4,
+            "nombre": "Nueva Area"
+          }
+          ```
 
       1.4. Delete:
 
-     - UrlDefault: http://127.10.10.10:5010/campus/delete/areas/?id=1
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/areas
      - Metodo: delete
      - Data: query
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion areas.
      - Ej: http://127.10.10.10:5010/campus/delete/areas/?id=1
 
+2. Coleccion Areas:
+
+   - Tipo token esperado: categorias
+
+     2.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/categorias
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todas las categorias
+      o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/get/categorias?id=1
+
+     2.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/categorias
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion categoria.
+     - Ej: 
+          ```json
+          {
+            "categoria": "Nueva Categoria"
+          }
+          ```
+
+     2.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/categorias
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion categoria.
+     - Ej: 
+          ```json
+          {
+            "id": 4,
+            "categoria": "Nueva Categoria actualizada"
+          }
+          ```
+
+      2.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/categorias
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion categorias.
+     - Ej: http://127.10.10.10:5010/campus/delete/categorias/?id=3
 ---
 
 # Creador:
