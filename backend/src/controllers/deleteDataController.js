@@ -1,4 +1,4 @@
-import { deleteAreaService, deleteCategoriaService, deleteEquipoService, deleteInsidenciaService, deleteTipoService, deleteTipo_equipoService, deleteTrainerService } from "../services/deleteServices.js";
+import { deleteAreaService, deleteCategoriaService, deleteEquipoService, deleteInsidenciaService, deleteLugarService, deleteTipoService, deleteTipo_equipoService, deleteTrainerService } from "../services/deleteServices.js";
 
 // Areas
 const deleteAreasController = async (req, res, next) => {
@@ -64,12 +64,14 @@ const deleteInsidenciasController = async (req, res, next) => {
 const deleteLugaresController = async (req, res, next) => {
     try {
         const { lugar_id } = req.query
-        const result = await deleteLugaresController(Number(lugar_id));
+
+        const result = await deleteLugarService(Number(lugar_id));
         if (result.deletedCount == 0) {
             res.status(500).json({ message: `no se ha encontrado ningun lugar con ese id`, result })
         } else {
             res.status(200).json({ message: `Lugar eliminado con exito`, result })
         }
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
