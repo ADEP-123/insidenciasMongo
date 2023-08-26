@@ -1,4 +1,5 @@
 # Ejercicio Manejo Insidencias Mongo
+
 ## Descripcion
 
 ---
@@ -72,7 +73,59 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 Ahora si podra interactuar con las consultas de la siguiente manera:
 
+1. Coleccion Areas:
+
+   - Tipo token esperado: Usuarios
+
+     1.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/areas/
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todas las areas o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/get/areas/?id=1
+
+     1.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/areas
+     - Metodo: post
+     - Data: body
+
+     ```json
+     {
+       "nombre": "Nueva Area"
+     }
+     ```
+
+     - Descripcion: Endpoint que permite crear un nuevo archivo en la coleccion area.
+     - Ej: http://127.10.10.10:5010/campus/post/areas
+
+     1.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/areas
+     - Metodo: put
+     - Data: body
+
+     ```json
+     {
+       "id": 4,
+       "nombre": "Nueva Area"
+     }
+     ```
+
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion area.
+     - Ej: http://127.10.10.10:5010/campus/put/areas
+
+      1.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/areas/?id=1
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion areas.
+     - Ej: http://127.10.10.10:5010/campus/delete/areas/?id=1
+
 ---
+
 # Creador:
 
 ## Andrès David ELizalde Peralta
