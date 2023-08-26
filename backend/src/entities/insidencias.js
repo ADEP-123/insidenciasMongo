@@ -120,7 +120,7 @@ class Insidencias {
                         categoria_insi: categoriaId,
                         tipo_insi: tipoId,
                         descr_insi: descripciom,
-                        fecha_insi: fecha,
+                        fecha_insi: new Date(fecha),
                         trainer_insi: trainerId,
                         equipo_insi: equipoId
                     }
