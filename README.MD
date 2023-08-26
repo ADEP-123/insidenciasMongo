@@ -112,7 +112,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
           }
           ```
 
-      1.4. Delete:
+     1.4. Delete:
 
      - UrlDefault: http://127.10.10.10:5010/campus/delete/areas
      - Metodo: delete
@@ -160,13 +160,64 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
           }
           ```
 
-      2.4. Delete:
+     2.4. Delete:
 
      - UrlDefault: http://127.10.10.10:5010/campus/delete/categorias
      - Metodo: delete
      - Data: query
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion categorias.
      - Ej: http://127.10.10.10:5010/campus/delete/categorias/?id=3
+
+3. Coleccion Areas:
+
+   - Tipo token esperado: categorias
+
+     3.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/equipo?id=TC-333
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todas las categorias
+      o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/get/equipo?id=TC-102
+
+     3.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/equipo
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion categoria.
+     - Ej: 
+          ```json
+          {
+            "id": "TC-333",
+            "tipoId": 1,
+            "lugarId": 4
+          }
+          ```
+
+     3.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/equipo
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion equipo.
+     - Ej: 
+          ```json
+          {
+            "id": "TC-333",
+            "tipoId": 2,
+            "lugarId": 4
+          }
+          ```
+
+     3.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/equipo
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion equipo.
+     - Ej: http://127.10.10.10:5010/campus/delete/equipo/?id=TC-333
 ---
 
 # Creador:
