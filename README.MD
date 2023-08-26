@@ -328,7 +328,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
 
    - Tipo token esperado: tipo_equipo
 
-     5.1. Get:
+     6.1. Get:
 
      - UrlDefault: http://127.10.10.10:5010/campus/get/tipo_equipo
      - Metodo: get
@@ -336,7 +336,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Descripcion: Endpoint que permite obtener todos los tipo_equipo o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
      - Ej: http://127.10.10.10:5010/campus/delete/tipo_equipo?id=1
 
-     5.2. Post:
+     6.2. Post:
 
      - UrlDefault: http://127.10.10.10:5010/campus/post/tipo_equipo
      - Metodo: post
@@ -349,7 +349,7 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
           }
           ```
 
-     5.3. Put:
+     6.3. Put:
 
      - UrlDefault: http://127.10.10.10:5010/campus/put/tipo_equipo
      - Metodo: put
@@ -363,13 +363,60 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
           }
           ```
 
-     5.4. Delete:
+     6.4. Delete:
 
      - UrlDefault: http://127.10.10.10:5010/campus/delete/tipo_equipo
      - Metodo: delete
      - Data: query
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion tipo_equipo.
      - Ej: http://127.10.10.10:5010/campus/delete/tipo_equipo/?id=5
+
+7. Coleccion Tipos:
+
+   - Tipo token esperado: tipos
+
+     7.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/tipos
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todos los tipos o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/delete/tipos?id=1
+
+     7.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/tipos
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion tipos.
+     - Ej: 
+          ```json
+          {
+          "tipo": "prueba"
+          }
+          ```
+
+     7.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/tipos
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion tipos.
+     - Ej: 
+          ```json
+          {
+          "id": 4,
+          "tipo": "prueba Actualizada"
+          }
+          ```
+
+     7.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/tipos
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion tipos.
+     - Ej: http://127.10.10.10:5010/campus/delete/tipos/?id=4
 
 ---
 
