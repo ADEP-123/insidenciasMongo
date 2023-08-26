@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { putAreasController, putCategoriasController, putEquipoController, putInsidenciasController } from '../controllers/putDataController.js';
-import { middlewarePostPutAreasDTO, middlewarePostPutCategoriasDTO, middlewarePostPutEquipoDTO, middlewarePostPutInsidenciasDTO } from '../middleware/middlewareDTO.js';
-import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias } from "../middleware/contentVerifyMiddleware.js";
+import { putAreasController, putCategoriasController, putEquipoController, putInsidenciasController, putLugaresController } from '../controllers/putDataController.js';
+import { middlewarePostPutAreasDTO, middlewarePostPutCategoriasDTO, middlewarePostPutEquipoDTO, middlewarePostPutInsidenciasDTO, middlewarePostPutLugaresDTO } from '../middleware/middlewareDTO.js';
+import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares } from "../middleware/contentVerifyMiddleware.js";
 
 const putInitRoute = () => {
     const router = Router();
@@ -9,6 +9,7 @@ const putInitRoute = () => {
     router.put("/categorias", contentMiddlewareCategorias, middlewarePostPutCategoriasDTO, putCategoriasController);
     router.put("/equipo", contentMiddlewareEquipo, middlewarePostPutEquipoDTO, putEquipoController);
     router.put("/insidencias", contentMiddlewareInsidencias, middlewarePostPutInsidenciasDTO, putInsidenciasController);
+    router.put("/lugares", contentMiddlewareLugares, middlewarePostPutLugaresDTO, putLugaresController);
     return router
 }
 
