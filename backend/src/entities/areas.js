@@ -38,7 +38,7 @@ class Areas {
         try {
             session = await startTransaction();
             const areasCollection = await collectionGen("areas");
-            const result = areasCollection.aggregate([
+            const result = await areasCollection.aggregate([
                 {
                     $project: {
                         id: "$area_id",
@@ -69,11 +69,12 @@ class Areas {
         try {
             const nuevaSesion = await counter.getNewId("areas")
             const { newId, session: newSession } = nuevaSesion;
+            console.log({ newId, nombre });
             session = newSession;
             const areasCollection = await collectionGen("areas");
-            const result = areasCollection.insertOne(
+            const result = await areasCollection.insertOne(
                 {
-                    area_id: newId,
+                    area_id: Number(newId),
                     area_nombre: nombre
                 }
             );
@@ -96,7 +97,7 @@ class Areas {
         try {
             session = await startTransaction();
             const areasCollection = await collectionGen("areas");
-            const result = areasCollection.updateOne(
+            const result = await areasCollection.updateOne(
                 {
                     area_id: id,
                 },
@@ -125,7 +126,7 @@ class Areas {
         try {
             session = await startTransaction();
             const areasCollection = await collectionGen("areas");
-            const result = areasCollection.deleteOne(
+            const result = await areasCollection.deleteOne(
                 {
                     area_id: id
                 }
