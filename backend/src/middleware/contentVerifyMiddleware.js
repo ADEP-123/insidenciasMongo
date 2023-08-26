@@ -39,8 +39,19 @@ const contentMiddlewareEquipo = (req, res, next) => {
     (!Verify) ? res.status(406).send({ status: 406, message: "No Autorizado" }) : next();
 };
 
+const contentMiddlewareInsidencias = (req, res, next) => {
+    let { payload } = req.data;
+    const { iat, exp, ...newPayload } = payload;
+    const { entidad, ...finalPayload } = newPayload;
+    payload = finalPayload;
+    let Clone = JSON.stringify(classToPlain(plainToClass(insidenciasDTO, {}, { ignoreDecorators: true })));
+    let Verify = Clone === JSON.stringify(payload);
+    (!Verify) ? res.status(406).send({ status: 406, message: "No Autorizado" }) : next();
+};
+
 export {
     contentMiddlewareAreas,
     contentMiddlewareCategorias,
-    contentMiddlewareEquipo
+    contentMiddlewareEquipo,
+    contentMiddlewareInsidencias
 }
