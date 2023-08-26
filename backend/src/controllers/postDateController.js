@@ -1,10 +1,11 @@
-import { postAreaService, postCategoriaService, postInsidenciaService, postLugarService, postTipoService, postTipo_equipoService, postTrainerService } from "../services/postServices.js";
+import { getEquipoByIdService, getTrainerByIdService } from "../services/getServices.js";
+import { postAreaService, postCategoriaService, postEquipoService, postInsidenciaService, postLugarService, postTipoService, postTipo_equipoService, postTrainerService } from "../services/postServices.js";
 
 // Areas
 const postAreasController = async (req, res, next) => {
     try {
         const { area_nombre } = req.body
-        console.log({area_nombre});
+        console.log({ area_nombre });
         const result = await postAreaService(area_nombre);
         res.status(200).json({ message: `area creada con exito`, result })
     } catch (error) {
@@ -27,8 +28,13 @@ const postCategoriasController = async (req, res, next) => {
 const postEquipoController = async (req, res, next) => {
     try {
         const { id_equipo, tipo, lugar } = req.body
-        const result = await postCategoriaService(id_equipo, tipo, lugar);
-        res.status(200).json({ message: `Equipo creado con exito`, result })
+        const existe = await getEquipoByIdService(id_equipo);
+        if (existe.length != 0) {
+            res.status(500).json({ error: `El equipo con id: ${id_equipo} ya existe` });
+        } else {
+            const result = await postEquipoService(id_equipo, tipo, lugar);
+            res.status(200).json({ message: `Equipo creado con exito`, result })
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -82,8 +88,13 @@ const postTiposController = async (req, res, next) => {
 const postTrainerController = async (req, res, next) => {
     try {
         const { train_id, train_nombre, email_personal, email_corporativo, telefono_movil, telefono_empresa, telefono_residencia, telefono_movil_empresarial } = req.body
-        const result = await postTrainerService(train_id, train_nombre, email_personal, email_corporativo, telefono_movil, telefono_empresa, telefono_residencia, telefono_movil_empresarial);
-        res.status(200).json({ message: `Trainer creado con exito`, result })
+        const existe = await getTrainerByIdService(train_id)
+        if (existe.length != 0) {
+            res.status(500).json({ error: `El trainer con id: ${train_id} ya existe` });
+        } else {
+            const result = await postTrainerService(train_id, train_nombre, email_personal, email_corporativo, telefono_movil, telefono_empresa, telefono_residencia, telefono_movil_empresarial);
+            res.status(200).json({ message: `Trainer creado con exito`, result })
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
