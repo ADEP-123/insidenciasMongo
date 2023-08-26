@@ -1,4 +1,4 @@
-import { getEquipoByIdService, getTrainerByIdService } from "../services/getServices.js";
+import { getCategoriaByIdService, getEquipoByIdService, getTipoByIdService, getTrainerByIdService } from "../services/getServices.js";
 import { postAreaService, postCategoriaService, postEquipoService, postInsidenciaService, postLugarService, postTipoService, postTipo_equipoService, postTrainerService } from "../services/postServices.js";
 
 // Areas
@@ -43,9 +43,23 @@ const postEquipoController = async (req, res, next) => {
 // Insidencias
 const postInsidenciasController = async (req, res, next) => {
     try {
-        const { id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi } = req.body
-        const result = await postInsidenciaService(id_insi, categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi);
-        res.status(200).json({ message: `Insidencia creada con exito`, result })
+        const { categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi } = req.body
+        const categoria = await getCategoriaByIdService(categoria_insi);
+        const tipo = await getTipoByIdService(tipo_insi);
+        const trainer = await getTrainerByIdService(trainer_insi);
+        const equipo = await getEquipoByIdService(equipo_insi);
+        if (categoria.length == 0) {
+            res.status(500).json({ message: `No se encuentra ninguna categoria con ese id` });
+        } else if (tipo.length == 0) {
+            res.status(500).json({ message: `No se encuentra ningun tipo de insidencia con ese id` });
+        } else if (trainer.length == 0) {
+            res.status(500).json({ message: `No se encuentra ningun trainer con ese id` });
+        } else if (equipo.length == 0) {
+            res.status(500).json({ message: `No se encuentra ningun equipo con ese id` });
+        } else {
+            const result = await postInsidenciaService(categoria_insi, tipo_insi, descr_insi, fecha_insi, trainer_insi, equipo_insi);
+            res.status(200).json({ message: `Insidencia creada con exito`, result })
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
