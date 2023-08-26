@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { deleteAreasController, deleteCategoriasController, deleteEquipoController, deleteInsidenciasController, deleteLugaresController, deleteTipoEquipoController } from '../controllers/deleteDataController.js';
-import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO } from '../middleware/middlewareDTO.js';
-import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo } from "../middleware/contentVerifyMiddleware.js";
+import { deleteAreasController, deleteCategoriasController, deleteEquipoController, deleteInsidenciasController, deleteLugaresController, deleteTipoEquipoController, deleteTiposController } from '../controllers/deleteDataController.js';
+import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO, middlewareGetDeleteTiposDTO } from '../middleware/middlewareDTO.js';
+import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo, contentMiddlewareTipo } from "../middleware/contentVerifyMiddleware.js";
 
 const deleteInitRoute = () => {
     const router = Router();
@@ -11,6 +11,7 @@ const deleteInitRoute = () => {
     router.delete("/insidencias", contentMiddlewareInsidencias, middlewareGetDeleteInsidenciasDTO, deleteInsidenciasController);
     router.delete("/lugares", contentMiddlewareLugares, middlewareGetDeleteLugaresDTO, deleteLugaresController);
     router.delete("/tipo_equipo", contentMiddlewareTipoEquipo, middlewareGetDeleteTipoEquipoDTO, deleteTipoEquipoController);
+    router.delete("/tipos", contentMiddlewareTipo, middlewareGetDeleteTiposDTO, deleteTiposController);
     return router
 }
 

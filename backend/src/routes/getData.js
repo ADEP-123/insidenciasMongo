@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { getAreasController, getCategoriasController, getEquipoController, getInsidenciasController, getLugaresController, getTipoEquipoController } from '../controllers/getDataController.js';
-import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO } from '../middleware/middlewareDTO.js';
-import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo } from "../middleware/contentVerifyMiddleware.js";
+import { getAreasController, getCategoriasController, getEquipoController, getInsidenciasController, getLugaresController, getTipoEquipoController, getTiposController } from '../controllers/getDataController.js';
+import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO, middlewareGetDeleteTiposDTO } from '../middleware/middlewareDTO.js';
+import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipo, contentMiddlewareTipoEquipo } from "../middleware/contentVerifyMiddleware.js";
 
 
 const getInitRoute = () => {
@@ -12,6 +12,7 @@ const getInitRoute = () => {
     router.get("/insidencias", contentMiddlewareInsidencias, middlewareGetDeleteInsidenciasDTO, getInsidenciasController);
     router.get("/lugares", contentMiddlewareLugares, middlewareGetDeleteLugaresDTO, getLugaresController);
     router.get("/tipo_equipo", contentMiddlewareTipoEquipo, middlewareGetDeleteTipoEquipoDTO, getTipoEquipoController);
+    router.get("/tipos", contentMiddlewareTipo, middlewareGetDeleteTiposDTO, getTiposController);
     return router
 }
 
