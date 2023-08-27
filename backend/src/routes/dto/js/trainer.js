@@ -54,7 +54,7 @@ __decorate([
     Expose({ name: "emailPers" }),
     Transform(({ value, key }) => {
         if (value) {
-            if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/.test(value)) {
+            if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
                 return value;
             }
             else {
@@ -71,7 +71,7 @@ __decorate([
     Expose({ name: "emailCorp" }),
     Transform(({ value, key }) => {
         if (value) {
-            if (/^[a-zA-Z0-9._%+-]+@campusland\\.com$/.test(value)) {
+            if (/^[a-zA-Z0-9._%+-]+@campusland\.com$/.test(value)) {
                 return value;
             }
             else {
