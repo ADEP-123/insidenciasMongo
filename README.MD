@@ -418,6 +418,66 @@ Ahora si podra interactuar con las consultas de la siguiente manera:
      - Descripcion: Endpoint que permite eliminar un archivo de la coleccion tipos.
      - Ej: http://127.10.10.10:5010/campus/delete/tipos/?id=4
 
+8. Coleccion Trainer:
+
+   - Tipo token esperado: trainer
+
+     8.1. Get:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/get/trainer
+     - Metodo: get
+     - Data: query
+     - Descripcion: Endpoint que permite obtener todos los trainer o por id especifico segun la informacion en el query, para encontrarlas todas simplemente no ingrese el id en el query.
+     - Ej: http://127.10.10.10:5010/campus/delete/trainer?id=9876543210
+
+     8.2. Post:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/post/trainer
+     - Metodo: post
+     - Data: body
+     - Descripcion: Endpoint que permite crear un archivo en la coleccion trainer.
+     - Ej: 
+          ```json
+          {
+            "id": "1111111111",
+            "nombre": "Prueba",
+            "emailPers": "prueba@gmail.com",
+            "emailCorp": "prueba@campusland.com",
+            "telfMov": "1234567890",
+            "telfRes": "6076342569",
+            "telfEmp": "9876543210",
+            "telfMovEmp": "5555555555"
+          }
+          ```
+
+     8.3. Put:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/put/trainer
+     - Metodo: put
+     - Data: body
+     - Descripcion: Endpoint que permite actualizar un archivo en la coleccion trainer.
+     - Ej: 
+          ```json
+          {
+            "id": "1111111111",
+            "nombre": "Prueba Actualizada",
+            "emailPers": "prueba@gmail.com",
+            "emailCorp": "prueba@campusland.com",
+            "telfMov": "1234567890",
+            "telfRes": "6076342569",
+            "telfEmp": "9876543210",
+            "telfMovEmp": "5555555555"
+          }
+          ```
+
+     8.4. Delete:
+
+     - UrlDefault: http://127.10.10.10:5010/campus/delete/trainer
+     - Metodo: delete
+     - Data: query
+     - Descripcion: Endpoint que permite eliminar un archivo de la coleccion trainer.
+     - Ej: http://127.10.10.10:5010/campus/delete/trainer/?id=1111111111
+
 ---
 
 # Creador:
