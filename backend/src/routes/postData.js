@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { postAreasController, postCategoriasController, postEquipoController, postInsidenciasController, postLugaresController, postTipoEquipoController, postTiposController, postTrainerController } from '../controllers/postDateController.js';
 import { middlewarePostPutAreasDTO, middlewarePostPutCategoriasDTO, middlewarePostPutEquipoDTO, middlewarePostPutInsidenciasDTO, middlewarePostPutLugaresDTO, middlewarePostPutTipoEquipoDTO, middlewarePostPutTiposDTO, middlewarePostPutTrainerDTO } from '../middleware/middlewareDTO.js';
 import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo, contentMiddlewareTipo, contentMiddlewareTrainer } from "../middleware/contentVerifyMiddleware.js";
-import { middlewareContentLengthAreas, middlewareContentLengthCategorias, middlewareContentLengthEquipo, middlewareContentLengthInsidencias, middlewareContentLengthLugares, middlewareContentLengthTipoEquipo,middlewareContentLengthTipos } from '../middleware/contentLengthMiddleware.js';
+import { middlewareContentLengthAreas, middlewareContentLengthCategorias, middlewareContentLengthEquipo, middlewareContentLengthInsidencias, middlewareContentLengthLugares, middlewareContentLengthTipoEquipo, middlewareContentLengthTipos,middlewareContentLengthTrainer } from '../middleware/contentLengthMiddleware.js';
 
 const postInitRoute = () => {
     const router = Router();
@@ -13,7 +13,7 @@ const postInitRoute = () => {
     router.post("/lugares", middlewareContentLengthLugares, contentMiddlewareLugares, middlewarePostPutLugaresDTO, postLugaresController);
     router.post("/tipo_equipo", middlewareContentLengthTipoEquipo, contentMiddlewareTipoEquipo, middlewarePostPutTipoEquipoDTO, postTipoEquipoController);
     router.post("/tipos", middlewareContentLengthTipos, contentMiddlewareTipo, middlewarePostPutTiposDTO, postTiposController);
-    router.post("/trainer", contentMiddlewareTrainer, middlewarePostPutTrainerDTO, postTrainerController);
+    router.post("/trainer", middlewareContentLengthTrainer, contentMiddlewareTrainer, middlewarePostPutTrainerDTO, postTrainerController);
     return router
 }
 
