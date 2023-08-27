@@ -35,8 +35,17 @@ const middlewareContentLengthInsidencias = (req, res, next,) => {
 };
 
 const middlewareContentLengthLugares = (req, res, next,) => {
-    console.log(req.headers['content-length']);
+    // console.log(req.headers['content-length']);
     req.headers['content-length'] > 72 ?
+        res.status(413).send({
+            status: 413,
+            message: "El tamaño de la informacion enviada es incorrecta"
+        }) : next()
+};
+
+const middlewareContentLengthTipoEquipo = (req, res, next,) => {
+    console.log(req.headers['content-length']);
+    req.headers['content-length'] > 77 ?
         res.status(413).send({
             status: 413,
             message: "El tamaño de la informacion enviada es incorrecta"
@@ -49,5 +58,6 @@ export {
     middlewareContentLengthCategorias,
     middlewareContentLengthEquipo,
     middlewareContentLengthInsidencias,
-    middlewareContentLengthLugares
+    middlewareContentLengthLugares,
+    middlewareContentLengthTipoEquipo
 }
