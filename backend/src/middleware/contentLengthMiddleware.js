@@ -5,7 +5,17 @@ const middlewareContentLengthAreas = (req, res, next,) => {
             status: 413,
             message: "El tamaño de la informacion enviada es incorrecta"
         }) : next()
+};
+
+const middlewareContentLengthCategorias = (req, res, next,) => {
+    console.log(req.headers['content-length']);
+    req.headers['content-length'] > 69 ?
+        res.status(413).send({
+            status: 413,
+            message: "El tamaño de la informacion enviada es incorrecta"
+        }) : next()
 }
 export{
-    middlewareContentLengthAreas
+    middlewareContentLengthAreas,
+    middlewareContentLengthCategorias
 }
