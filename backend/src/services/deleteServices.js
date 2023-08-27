@@ -59,7 +59,7 @@ const deleteTipoService = async (id) => {
 //Crud trainer
 const deleteTrainerService = async (id) => {
     const trainer = new Trainers();
-    const result = await trainer.putTrainer(id, nombre, emailPers, emailCorp, telfMov, telfRes, telfEmp, telfMovEmp);
+    const result = await trainer.deleteTrainer(id);
     return result
 };
 
