@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { deleteAreasController, deleteCategoriasController, deleteEquipoController, deleteInsidenciasController, deleteLugaresController, deleteTipoEquipoController, deleteTiposController } from '../controllers/deleteDataController.js';
-import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO, middlewareGetDeleteTiposDTO } from '../middleware/middlewareDTO.js';
-import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo, contentMiddlewareTipo } from "../middleware/contentVerifyMiddleware.js";
+import { deleteAreasController, deleteCategoriasController, deleteEquipoController, deleteInsidenciasController, deleteLugaresController, deleteTipoEquipoController, deleteTiposController, deleteTrainerController } from '../controllers/deleteDataController.js';
+import { middlewareGetDeleteAreasDTO, middlewareGetDeleteCategoriasDTO, middlewareGetDeleteEquipoDTO, middlewareGetDeleteInsidenciasDTO, middlewareGetDeleteLugaresDTO, middlewareGetDeleteTipoEquipoDTO, middlewareGetDeleteTiposDTO, middlewareGetDeleteTrainerDTO } from '../middleware/middlewareDTO.js';
+import { contentMiddlewareAreas, contentMiddlewareCategorias, contentMiddlewareEquipo, contentMiddlewareInsidencias, contentMiddlewareLugares, contentMiddlewareTipoEquipo, contentMiddlewareTipo, contentMiddlewareTrainer } from "../middleware/contentVerifyMiddleware.js";
 
 const deleteInitRoute = () => {
     const router = Router();
@@ -12,6 +12,7 @@ const deleteInitRoute = () => {
     router.delete("/lugares", contentMiddlewareLugares, middlewareGetDeleteLugaresDTO, deleteLugaresController);
     router.delete("/tipo_equipo", contentMiddlewareTipoEquipo, middlewareGetDeleteTipoEquipoDTO, deleteTipoEquipoController);
     router.delete("/tipos", contentMiddlewareTipo, middlewareGetDeleteTiposDTO, deleteTiposController);
+    router.delete("/trainer", contentMiddlewareTrainer, middlewareGetDeleteTrainerDTO, deleteTrainerController);
     return router
 }
 
